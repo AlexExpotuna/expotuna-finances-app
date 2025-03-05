@@ -1,4 +1,4 @@
-import { Box, Divider, Icon, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIcon, SvgIconProps, Toolbar } from '@mui/material'
+import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIconProps } from '@mui/material'
 import React from 'react';
 import {
     Link as RouterLink,
@@ -46,11 +46,11 @@ export const MyDrawer = ({items}:MyDrawerProps) => {
         }}
       >
         <img
-          src="../src/assets/logo.png" 
-          alt="Insumos médicos" 
+          src="./public/logo.png" 
+          alt="Expotuna logo" 
           style={{
-            width: '250px', 
-            height: 'auto',
+            maxWidth: '100%', 
+            height: '150px',
             objectFit: 'contain'
           }}
         />

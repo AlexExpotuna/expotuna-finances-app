@@ -5,26 +5,11 @@ import { DrawerMobile } from './components/DrawerMobile';
 import { DrawerDesktop } from './components/DrawerDesktop';
 import { Appbar } from './components/Appbar';
 import { MyDrawer } from './components/MyDrawer';
-import { ListInventoryItem } from './types';
 import { Outlet } from 'react-router-dom';  
-
-import InventoryIcon from '@mui/icons-material/Inventory';
-import PeopleIcon from '@mui/icons-material/People';
-import GroupIcon from '@mui/icons-material/Group';
-import LaboratoryIcon from '@mui/icons-material/LocalHospital';
-import ProductIcon from '@mui/icons-material/Store';
-import SupplierIcon from '@mui/icons-material/Business';
+import { MenuOptions } from './MenuOptions';
 
 const drawerWidth = 240;
-const items: ListInventoryItem[] = [
-  { text: "Inventory", to: "/app/inventory", icon: InventoryIcon },
-  { text: "Clientes", to: "/app/client", icon: PeopleIcon },
-  { text: "Usuarios", to: "/app/user", icon: GroupIcon },
-  { text: "Laboratorio", to: "/app/laboratory", icon: LaboratoryIcon },
-  { text: "Productos", to: "/app/product", icon: ProductIcon },
-  { text: "Proveedores", to: "/app/provider", icon: SupplierIcon },
-  { text: "Reabastecimiento", to: "/app/resupply", icon: SupplierIcon },
-];
+
 export function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -53,8 +38,8 @@ export function ResponsiveDrawer() {
         <DrawerMobile drawerWidth={drawerWidth}
             handleDrawerTransitionEnd={handleDrawerTransitionEnd}
              handleDrawerClose={handleDrawerClose}
-             drawer={MyDrawer({items})}/>
-        <DrawerDesktop drawerWidth={drawerWidth} drawer={MyDrawer({items})}/>
+             drawer={MyDrawer({items: MenuOptions})}/>
+        <DrawerDesktop drawerWidth={drawerWidth} drawer={MyDrawer({items: MenuOptions})}/>
       </Box>
       <Box
         component="main"

@@ -32,7 +32,7 @@ export const Appbar = ({drawerWidth, handleDrawerToggle}: AppbarProps) => {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             
           </Typography>
-          <Button onClick={handleClick} color="inherit">Logout</Button>
+          {/* <Button onClick={handleClick} color="inherit">Logout</Button> */}
         </Toolbar>
       </AppBar>
   )
