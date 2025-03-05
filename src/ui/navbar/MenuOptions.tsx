@@ -1,7 +1,6 @@
-
-import InventoryIcon from '@mui/icons-material/Inventory';
 import { ListInventoryItem } from './types';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
+import { ListPriceView } from '../../pages/ListPrice/ListPriceView';
 export const MenuOptions: ListInventoryItem[] = [
-  { text: "Lista de precio", to: "/app/price-list", relativePath: "price-list", icon: InventoryIcon, view: <PriceChangeIcon/> },
+  { text: "Lista de precio", to: "/app/price-list", relativePath: "price-list", icon: PriceChangeIcon, view: <ListPriceView/>, hidden: false },
 ];

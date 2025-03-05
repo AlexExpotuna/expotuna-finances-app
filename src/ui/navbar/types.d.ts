@@ -4,4 +4,5 @@ export type ListInventoryItem = {
     to?: string,
     relativePath?: string,
     view?: JSX.Element, 
+    hidden: boolean,
 }

@@ -13,7 +13,6 @@ const drawerWidth = 240;
 export function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);
@@ -38,8 +37,8 @@ export function ResponsiveDrawer() {
         <DrawerMobile drawerWidth={drawerWidth}
             handleDrawerTransitionEnd={handleDrawerTransitionEnd}
              handleDrawerClose={handleDrawerClose}
-             drawer={MyDrawer({items: MenuOptions})}/>
-        <DrawerDesktop drawerWidth={drawerWidth} drawer={MyDrawer({items: MenuOptions})}/>
+             drawer={MyDrawer({items: MenuOptions.filter(item => !item.hidden)})}/>
+        <DrawerDesktop drawerWidth={drawerWidth} drawer={MyDrawer({items: MenuOptions.filter(item => !item.hidden)})}/>
       </Box>
       <Box
         component="main"

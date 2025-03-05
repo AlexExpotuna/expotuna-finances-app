@@ -46,7 +46,7 @@ export const MyDrawer = ({items}:MyDrawerProps) => {
         }}
       >
         <img
-          src="./public/logo.png" 
+          src="../public/logo.png" 
           alt="Expotuna logo" 
           style={{
             maxWidth: '100%', 
