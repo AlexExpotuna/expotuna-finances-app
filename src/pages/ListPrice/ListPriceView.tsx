@@ -3,6 +3,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile'
 import { Button, Grid } from '@mui/material';
 import { useListPrices } from '../../hooks/useListPrices';
 import { useState } from 'react';
+import { AxiosError } from 'axios';
 interface FormElements extends HTMLFormControlsCollection {
   listPriceInput: HTMLInputElement 
 }
@@ -13,12 +14,20 @@ interface ListPriceFormElement extends HTMLFormElement {
 export const ListPriceView = () => {
     const [isDisabled, setIsDisabled] = useState(false)
     const {appListPrices, handleChange, postAsync} = useListPrices();
-    async function handleSubmit(event: React.FormEvent<ListPriceFormElement>) {
+    function handleSubmit(event: React.FormEvent<ListPriceFormElement>) {
         event.preventDefault();
         setIsDisabled(true);
-        await postAsync(appListPrices);
-        handleChange(null);
-        setIsDisabled(false);
+        postAsync(appListPrices).then((res) => {
+            alert(res);
+        })
+        .catch((e) => {
+            const err: AxiosError = new AxiosError(e);
+            alert(`${err.message}`)
+        })
+        .finally(() => {
+            handleChange(null);
+            setIsDisabled(false);
+        });
       }
     return (
         <>

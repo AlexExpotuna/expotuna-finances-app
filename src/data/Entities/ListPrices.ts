@@ -1,3 +1,3 @@
 export type ListPrices = {
-    FileInput?: File
+    FileInput: File | null
 }

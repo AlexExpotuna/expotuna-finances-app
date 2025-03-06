@@ -23,6 +23,8 @@ export const useListPrices = () => {
             }
             catch(e){
                 console.error(e);
+                throw e;
+                // Promise.reject(e);
             }
         }
     }
