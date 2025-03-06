@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from "react-router-dom";
 import { ResponsiveDrawer } from "../ui/navbar/Navbar";
 import PublicRoute from "./components/PublicRoute";
 import { MenuOptions } from "../ui/navbar/MenuOptions";
@@ -23,6 +23,10 @@ export const AppRouter = createBrowserRouter(createRoutesFromElements(
             </PublicRoute>
         }
     />  */}
+    <Route
+        path="*"
+        element={<Navigate to="/app" replace />}
+    />
     <Route path="/app" element={
         <PublicRoute>
             <ResponsiveDrawer/>
