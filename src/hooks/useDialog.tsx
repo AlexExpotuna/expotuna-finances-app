@@ -1,21 +1,12 @@
-import { useInventoryContext } from './useInventoryContext';
+import { useFinanceContext } from './useFinancesContext';
 export const useDialog = () => {
   const { openEditDialog, setOpenEditDialog, openCreateDialog, 
     setOpenCreateDialog, openDeleteDialog, setOpenDeleteDialog,
-    openDetailDialog, setOpenDetailDialog
-  } = useInventoryContext();
+  } = useFinanceContext();
   return {
     openEditDialog,
     openDeleteDialog,
     openCreateDialog,
-    openDetailDialog,
-    handleOpenDetailDialog(){
-        setOpenDetailDialog(true);
-      },
-    handleCloseDetailDialog(){
-        setOpenDetailDialog(false);
-      },
-
     handleOpenCreateDialog(){
         setOpenCreateDialog(true);
       },

@@ -1,4 +1,4 @@
-import { useInventoryContext } from './useInventoryContext'
+import { useFinanceContext } from './useFinancesContext'
 import { ILoginRepository } from '../data/Interfaces/ILoginRepository';
 import { LoginRepository } from '../data/Repositories/LoginRepository';
 import { UserLogin } from '../data/Entities/UserLogin';
@@ -13,7 +13,7 @@ type AuthStateProps = {
 } & IAuthState;
 
 export const useAuth = () => {
-  const {user, setUser} = useInventoryContext();
+  const {user, setUser} = useFinanceContext();
   const navigate = useNavigate();
   return {
     async loginAsync(newUser: UserLogin){

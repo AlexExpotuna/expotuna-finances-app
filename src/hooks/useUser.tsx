@@ -1,10 +1,10 @@
 import { User } from "../data/Entities/User";
 import { IUserRepository } from "../data/Interfaces/IUserRepository";
 import { UserRepository } from "../data/Repositories/UserRepository";
-import { useInventoryContext } from "./useInventoryContext";
+import { useFinanceContext } from "./useFinancesContext";
 const repo: IUserRepository = UserRepository;
 export const useUser = () => {
-    const { appUsers, setAppUsers } = useInventoryContext();
+    const { appUsers, setAppUsers } = useFinanceContext();
     return {
         appUsers,
         async getAllAsync(){

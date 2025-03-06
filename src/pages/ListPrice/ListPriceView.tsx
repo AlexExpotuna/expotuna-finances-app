@@ -3,6 +3,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile'
 
 import { useState } from 'react';
 import { Button, Grid } from '@mui/material';
+import { useListPrices } from '../../hooks/useListPrices';
 interface FormElements extends HTMLFormControlsCollection {
   listPriceInput: HTMLInputElement
 }
@@ -11,13 +12,14 @@ interface ListPriceFormElement extends HTMLFormElement {
 }
 
 export const ListPriceView = () => {
-    const [value, setValue] = useState<File | null>(null)
-    const handleChange = (newValue: File | null) => {
-        setValue(newValue)
-    }
+    // const [value, setValue] = useState<File | null>(null);
+    const {appListPrices, handleChange} = useListPrices();
+    // const handleChange = (newValue: File | null) => {
+    //     setValue(newValue)
+    // }
     function handleSubmit(event: React.FormEvent<ListPriceFormElement>) {
-        event.preventDefault()
-        setValue(null);
+        event.preventDefault();
+        handleChange(null);
         // event.currentTarget.reset();
       }
     return (

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { UserState } from '../data/Entities/UserLogin';
 import { initialSales, initialUser } from './initialStates';
-import { MyContext, MyContextProps } from '../hooks/useInventoryContext';
+import { MyContext, MyContextProps } from '../hooks/useFinancesContext';
 import { User } from '../data/Entities/User';
 import { Product } from "../data/Entities/Product";
 import { Laboratory } from "../data/Entities/Laboratory";
