@@ -1,16 +1,16 @@
-import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material'
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
-import { useAuth } from '../../../hooks/useAuth';
+// import { useAuth } from '../../../hooks/useAuth';
 interface AppbarProps {
     drawerWidth: number, 
     handleDrawerToggle: () => void,
 }
 export const Appbar = ({drawerWidth, handleDrawerToggle}: AppbarProps) => {
-  const {logout} = useAuth();
-  const handleClick = () => {
-    console.log("appbar clic")
-    logout();
-  }
+  // const {logout} = useAuth();
+  // const handleClick = () => {
+  //   console.log("appbar clic")
+  //   logout();
+  // }
   return (
     <AppBar
         position="fixed"

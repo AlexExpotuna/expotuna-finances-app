@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { UserState } from '../data/Entities/UserLogin';
-import { initialSales, initialUser } from './initialStates';
+import { initialUser, initialListPrices } from './initialStates';
 import { MyContext, MyContextProps } from '../hooks/useFinancesContext';
 import { User } from '../data/Entities/User';
-import { ListPrices } from '../data/Entities/ListPrices';
+
 
 interface SurveyContextProps{
     children: JSX.Element;
@@ -15,9 +15,7 @@ export const FinancesContext = ({ children }: SurveyContextProps) => {
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [appUsers, setAppUsers] = useState<User[]>([]);
-  const [appListPrices, setAppListPrices] = useState({
-    FileInput: null
-  } as ListPrices);
+  const [appListPrices, setAppListPrices] = useState(initialListPrices);
   const value: MyContextProps = {
     user,
     appUsers,

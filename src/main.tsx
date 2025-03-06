@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { AppRouter } from './routers/AppRouter'
 import { Theme } from './ui/Theme/Theme'
-import { FinancesContext } from './state/InventoryContext'
+import { FinancesContext } from './state/financesContext'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
