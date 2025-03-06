@@ -1,6 +1,5 @@
 import { jwtDecode } from "jwt-decode";
 import { JWTRequest } from "../DTOs/JWTRequest";
-import { MessageInfoDTO } from "../DTOs/MessageInfoDTO";
 import { UserLoginRequest } from "../DTOs/UserLoginRequest";
 import { UserState, UserLogin } from "../Entities/UserLogin";
 import { Post } from "../HttpClient/ClientMethods";

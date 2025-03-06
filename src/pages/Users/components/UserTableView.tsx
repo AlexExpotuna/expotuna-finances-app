@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, IconButton, Paper } from "@mui/material";
+import { Box, ButtonGroup, IconButton } from "@mui/material";
 import { DataGrid, GridRenderCellParams } from "@mui/x-data-grid";
 import { User } from "../../../data/Entities/User";
 import { useDialog } from "../../../hooks/useDialog";
