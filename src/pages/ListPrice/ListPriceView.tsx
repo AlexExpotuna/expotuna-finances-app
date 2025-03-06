@@ -1,26 +1,24 @@
 import { MuiFileInput } from 'mui-file-input';
 import AttachFileIcon from '@mui/icons-material/AttachFile'
-
-import { useState } from 'react';
 import { Button, Grid } from '@mui/material';
 import { useListPrices } from '../../hooks/useListPrices';
+import { useState } from 'react';
 interface FormElements extends HTMLFormControlsCollection {
-  listPriceInput: HTMLInputElement
+  listPriceInput: HTMLInputElement 
 }
 interface ListPriceFormElement extends HTMLFormElement {
   readonly elements: FormElements
 }
 
 export const ListPriceView = () => {
-    // const [value, setValue] = useState<File | null>(null);
-    const {appListPrices, handleChange} = useListPrices();
-    // const handleChange = (newValue: File | null) => {
-    //     setValue(newValue)
-    // }
-    function handleSubmit(event: React.FormEvent<ListPriceFormElement>) {
+    const [isDisabled, setIsDisabled] = useState(false)
+    const {appListPrices, handleChange, postAsync} = useListPrices();
+    async function handleSubmit(event: React.FormEvent<ListPriceFormElement>) {
         event.preventDefault();
+        setIsDisabled(true);
+        await postAsync(appListPrices);
         handleChange(null);
-        // event.currentTarget.reset();
+        setIsDisabled(false);
       }
     return (
         <>
@@ -29,7 +27,8 @@ export const ListPriceView = () => {
                 <Grid container spacing={2}>
                     <Grid item md={12}>
                         <MuiFileInput 
-                        value={value} 
+                        required
+                        value={appListPrices.FileInput} 
                         id= "listPriceInput"
                         label= "Lista de precio"
                         placeholder='Elija un archivo de excel'
@@ -42,7 +41,7 @@ export const ListPriceView = () => {
                         onChange={handleChange} />
                     </Grid>
                     <Grid item md={12}>
-                        <Button type="submit" variant="contained">Submit</Button>
+                        <Button disabled={isDisabled} type="submit" variant="contained">Submit</Button>
                     </Grid>
                 </Grid>
             </form>
