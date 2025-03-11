@@ -4,6 +4,8 @@ import { Button, Grid } from '@mui/material';
 import { useListPrices } from '../../hooks/useListPrices';
 import { useState } from 'react';
 import { AxiosError } from 'axios';
+import { ErrorTable } from './components/ErrorTable';
+import { ExcelTemplateButton } from './components/ExcelTemplateButton';
 interface FormElements extends HTMLFormControlsCollection {
   listPriceInput: HTMLInputElement 
 }
@@ -13,12 +15,14 @@ interface ListPriceFormElement extends HTMLFormElement {
 
 export const ListPriceView = () => {
     const [isDisabled, setIsDisabled] = useState(false)
-    const {appListPrices, handleChange, postAsync} = useListPrices();
+    const {appListPrices, handleChange, appIsSuccess, appError, postAsync} = useListPrices();
     function handleSubmit(event: React.FormEvent<ListPriceFormElement>) {
         event.preventDefault();
         setIsDisabled(true);
         postAsync(appListPrices).then((res) => {
             alert(res);
+            console.log(appError)
+            console.log(appIsSuccess)
         })
         .catch((e) => {
             const err: AxiosError = new AxiosError(e);
@@ -31,9 +35,13 @@ export const ListPriceView = () => {
       }
     return (
         <>
-            <h1>List Price view</h1>
+            <h1>Price List</h1>
+            
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
+                    <Grid item md={12}>
+                        <ExcelTemplateButton/>
+                    </Grid>
                     <Grid item md={12}>
                         <MuiFileInput 
                         required
@@ -54,6 +62,7 @@ export const ListPriceView = () => {
                     </Grid>
                 </Grid>
             </form>
+            <ErrorTable errors={appError} isSuccess={appIsSuccess}/>
         </>
     )
 }

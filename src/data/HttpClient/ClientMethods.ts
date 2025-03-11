@@ -25,8 +25,8 @@ export const Get = async <T extends unknown>(
 export const Post = async <T extends unknown>(
     endpoint: string,
     data?: object,
+    aditionalHeaders?: object,
     authorized: boolean = true,
-    params?: object,
 ): Promise<T> => {
     const { Token } = initialUser;
     if (authorized) {
@@ -35,13 +35,14 @@ export const Post = async <T extends unknown>(
             return config;
         });
     }
-    return await axiosClient.post(endpoint, data, { params })
+    return await axiosClient.post(endpoint, data, {
+        headers: {...aditionalHeaders}
+    })
         .then(({ data }: AxiosResponse<T>) => data)
         .catch((error: AxiosError<any>) => {
             console.log(JSON.stringify(error, null, 3));
             throw error;
         })
-        
 };
 
 export const Put = async <T extends unknown>(

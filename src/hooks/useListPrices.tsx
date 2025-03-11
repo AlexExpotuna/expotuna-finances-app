@@ -1,3 +1,4 @@
+import { ListPriceErrorResult } from "../data/Entities/ListPriceErrorResult";
 import { ListPrices } from "../data/Entities/ListPrices";
 import { IListPricesRepository } from "../data/Interfaces/IListPricesRepository";
 import { ListPricesRepository } from "../data/Repositories/ListPricesRepository";
@@ -7,9 +8,11 @@ const repo:IListPricesRepository = ListPricesRepository;
 
 export const useListPrices = () => {
 
-    const {appListPrices, setAppListPrices} = useFinanceContext();
+    const {appListPrices, setAppListPrices, errors, setErrors, isSuccess, setIsSuccess} = useFinanceContext();
     return{
         appListPrices,
+        appError: errors,
+        appIsSuccess: isSuccess,
         handleChange (newValue: File | null) {
             setAppListPrices((formy) => ({
                 ...formy,
@@ -19,12 +22,14 @@ export const useListPrices = () => {
         async postAsync(newListPrice: ListPrices){
             try{
                 const handle = await repo.CreateAsync(newListPrice);
+                setErrors(handle.detail as ListPriceErrorResult[]);
+                setIsSuccess(handle.success);
                 return handle.message;
             }
             catch(e){
+                setIsSuccess(true);
                 console.error(e);
                 throw e;
-                // Promise.reject(e);
             }
         }
     }

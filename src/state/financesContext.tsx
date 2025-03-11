@@ -3,6 +3,7 @@ import { UserState } from '../data/Entities/UserLogin';
 import { initialUser, initialListPrices } from './initialStates';
 import { MyContext, MyContextProps } from '../hooks/useFinancesContext';
 import { User } from '../data/Entities/User';
+import { ListPriceErrorResult } from '../data/Entities/ListPriceErrorResult';
 
 
 interface SurveyContextProps{
@@ -11,6 +12,8 @@ interface SurveyContextProps{
 
 export const FinancesContext = ({ children }: SurveyContextProps) => {
   const [user, setUser] = useState<UserState>(initialUser);
+  const [isSuccess, setIsSuccess] = useState(true);
+  const [errors, setErrors] = useState<ListPriceErrorResult[]>([]) 
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -23,6 +26,10 @@ export const FinancesContext = ({ children }: SurveyContextProps) => {
     openDeleteDialog,
     openCreateDialog,
     appListPrices,
+    isSuccess,
+    errors,
+    setErrors,
+    setIsSuccess,
     setAppListPrices,
     setOpenCreateDialog,
     setOpenDeleteDialog,

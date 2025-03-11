@@ -5,6 +5,7 @@ import {
     LinkProps as RouterLinkProps,
   } from 'react-router-dom';
 import { ListInventoryItem } from '../types';
+import logo from '../../../assets/Logo.png';
 interface MyDrawerProps {
     items: ListInventoryItem[]
 }
@@ -46,7 +47,7 @@ export const MyDrawer = ({items}:MyDrawerProps) => {
         }}
       >
         <img
-          src="../public/logo.png" 
+          src={logo}
           alt="Expotuna logo" 
           style={{
             maxWidth: '100%', 
