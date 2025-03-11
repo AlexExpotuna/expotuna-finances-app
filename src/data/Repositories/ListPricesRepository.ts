@@ -14,8 +14,8 @@ export const ListPricesRepository: IListPricesRepository = {
             newForm.append("FileInput", dto.FileInput);
             const contentType = {"Content-Type": "multipart/form-data"};
             const res = await Post<MessageInfoDTO>("Ci/list-price", newForm, 
+                false,
                 contentType,
-                false
             );
             const mapper = res.detail as ListPriceErrorResultDTO[]; 
             res.detail =  mapper.map(dt => ({

@@ -25,8 +25,8 @@ export const Get = async <T extends unknown>(
 export const Post = async <T extends unknown>(
     endpoint: string,
     data?: object,
-    aditionalHeaders?: object,
     authorized: boolean = true,
+    aditionalHeaders?: object,
 ): Promise<T> => {
     const { Token } = initialUser;
     if (authorized) {
@@ -35,6 +35,7 @@ export const Post = async <T extends unknown>(
             return config;
         });
     }
+    
     return await axiosClient.post(endpoint, data, {
         headers: {...aditionalHeaders}
     })
