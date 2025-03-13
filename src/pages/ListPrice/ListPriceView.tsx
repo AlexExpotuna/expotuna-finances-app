@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { AxiosError } from 'axios';
 import { ErrorTable } from './components/ErrorTable';
 import { ExcelTemplateButton } from './components/ExcelTemplateButton';
+import { MessageInfoDTO } from '../../data/DTOs/MessageInfoDTO';
 interface FormElements extends HTMLFormControlsCollection {
   listPriceInput: HTMLInputElement 
 }
@@ -24,9 +25,17 @@ export const ListPriceView = () => {
             console.log(appError)
             console.log(appIsSuccess)
         })
-        .catch((e) => {
-            const err: AxiosError = new AxiosError(e);
-            alert(`${err.message}`)
+        .catch((e: any) => {
+            const err: AxiosError = e as AxiosError;
+            const apiResponse = err.response?.data as MessageInfoDTO;
+            console.log("-------------")
+            if(apiResponse){
+                alert(apiResponse.message)
+                return;
+            }
+            if(err){
+                alert(`${err.message}`)
+            }
         })
         .finally(() => {
             handleChange(null);
